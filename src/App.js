@@ -1,20 +1,13 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {increment, decrement} from './Actions';
-
+import Container from './Container'
 
 const App = () => {
-    const counter = useSelector(state => state.counter)
-    const isLoggedIn = useSelector(state => state.isLoggedIn)
-    const dispatch = useDispatch()
-
+    //header
+    //add bar
+    //list
+    //footer
     return (
-        <div>
-            <h1>Counter: {counter}</h1>
-            <button onClick={() => dispatch(increment(2))}>+</button>
-            <button onClick={() => dispatch(decrement(0.5))}>-</button>
-            {isLoggedIn && <h3>Secret info</h3>}
-        </div>
+        <Container />
     )
 }
 
