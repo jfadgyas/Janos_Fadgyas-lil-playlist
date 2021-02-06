@@ -43,11 +43,17 @@ const Container = () => {
         setSongs({allSongs: sortedSongs}) 
     }
 
+    const deleteSong = (e) => {
+        const id = parseInt(e.target.parentNode.id)
+        const filteredSongs = songs.allSongs.filter((item, index) => index !== id)
+        setSongs({allSongs: filteredSongs})
+    }
+
     return (
         <main>
             <NewSong addSong={addSong}/>
             <ListHead sortSongs={sortSongs}/>              
-            <List {...songs}/>
+            <List {...songs} deleteSong={deleteSong}/>
 
         </main>
     )
