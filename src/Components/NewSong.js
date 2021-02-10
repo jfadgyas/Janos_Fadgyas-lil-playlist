@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {addSong} from '../Actions';
 
-const NewSong = (props) => {
+const NewSong = () => {
+    const dispatch = useDispatch()
+    
     const [newSong, setNewSong] = useState({
         song: '',
         artist: '',
@@ -13,7 +17,7 @@ const NewSong = (props) => {
         const {name, value} = e.target
         if (name === 'newsong'){
             //if empty dont send?
-            props.addSong(newSong)
+            dispatch(addSong(newSong))
             return setNewSong({
                 song: '',
                 artist: '',

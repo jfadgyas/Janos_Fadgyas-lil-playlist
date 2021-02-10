@@ -3,7 +3,7 @@ import ListItem from './ListItem'
 
 const List = (props) => {
     const songList = props.allSongs.map((item, index) => 
-        <ListItem key={index} id={index} {...item} deleteSong={props.deleteSong}/>)
+        <ListItem key={index} id={index} {...item}/>)
     
     return (
         <ul>

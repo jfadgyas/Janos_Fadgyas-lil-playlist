@@ -1,16 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {filterSong} from '../Actions';
 
-const FilterSong = (props) => {
+const FilterSong = () => {
+    const songs = useSelector(state => state.songs)
+    const dispatch = useDispatch()
+
     const [filters, setFilters] = useState({
         genre: false,
         rating: false
     })
+    const genreList = useRef()
+
+    const generateGenreList = () => {
+        if (!filters.genre && !filters.rating){
+            const genreItems = Array.from(new Set(songs.allSongs.map(item => item.genre)))
+            const genres = genreItems.map((item,index) => <option key={index} value={item}>{item}</option>)
+            genreList.current = genres
+            return genres
+        }
+        return genreList.current
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target
         let newValue = !value ? false : value
         setFilters({...filters, [name]: newValue})
-        props.filterSong({...filters, [name]: newValue})
+        dispatch(filterSong({...filters, [name]: newValue}))
     }
 
     return (
@@ -20,7 +36,7 @@ const FilterSong = (props) => {
                 value={filters.genre}
                 onChange={handleChange}>
                     <option default value=''>All</option>
-                    {props.genres}
+                    {generateGenreList()}
             </select>
             <select
                 name='rating'
