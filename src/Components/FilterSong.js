@@ -31,6 +31,7 @@ const FilterSong = () => {
 
     return (
         <section>
+            <label>Genre filter</label>
             <select
                 name='genre'
                 value={filters.genre}
@@ -38,6 +39,7 @@ const FilterSong = () => {
                     <option default value=''>All</option>
                     {generateGenreList()}
             </select>
+            <label>Rating filter</label>
             <select
                 name='rating'
                 value={filters.rating}

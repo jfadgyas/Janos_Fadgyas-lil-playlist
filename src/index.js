@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './Style/app.css';
 import {createStore} from 'redux';
-import {Provider} from 'react-redux'
-import allReducers from './Reducers'
+import {Provider} from 'react-redux';
+import allReducers from './Reducers';
 
 const songStore = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

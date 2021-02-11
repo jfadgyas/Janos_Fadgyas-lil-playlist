@@ -46,7 +46,7 @@ const NewSong = () => {
                 type='text'
                 name='genre'
                 value={newSong.genre}
-                placeholder='Gender'
+                placeholder='Genre'
                 onChange={handleChange}/>
             <label>Rating: </label>
             <select
@@ -60,7 +60,7 @@ const NewSong = () => {
                     <option value='4'>4</option>
                     <option value='5'>5</option>
             </select>
-            <button>Add song</button>
+            <button className='add pointer'>Add song</button>
         </form>
     )
 }
