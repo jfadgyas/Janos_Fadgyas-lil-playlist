@@ -5,10 +5,10 @@ const NewSong = (props) => {
         song: '',
         artist: '',
         genre: '',
-        rating: ''
+        rating: '1'
     })
 
-    const handleChange = (e) => {
+    const handleChange = (e) => {  
         e.preventDefault()
         const {name, value} = e.target
         if (name === 'newsong'){
@@ -18,7 +18,7 @@ const NewSong = (props) => {
                 song: '',
                 artist: '',
                 genre: '',
-                rating: ''
+                rating: '1'
             })
         }
         setNewSong(Object.assign({...newSong}, {[name]: value}))
@@ -44,14 +44,18 @@ const NewSong = (props) => {
                 value={newSong.genre}
                 placeholder='Gender'
                 onChange={handleChange}/>
-            <input
-                type='number'
-                min='1'
-                max='5'
+            <label>Rating: </label>
+            <select
                 name='rating'
+                placeholder='Rating'
                 value={newSong.rating}
-                placeholder='Rating (1-5)'
-                onChange={handleChange}/>
+                onChange={handleChange}>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+            </select>
             <button>Add song</button>
         </form>
     )

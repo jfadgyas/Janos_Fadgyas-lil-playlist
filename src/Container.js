@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import List from './Components/List'
+import ListHead from './Components/ListHead'
 import NewSong from './Components/NewSong'
 
 const Container = () => {
@@ -9,30 +10,52 @@ const Container = () => {
                 song: 'fade to black',
                 artist: 'Metallica',
                 genre: 'rock',
-                rating: 5
+                rating: '5'
             },
             {
                 song: 'touch me',
                 artist: 'krtm',
                 genre: 'electronic',
-                rating: 5
+                rating: '5'
             },
             {
                 song: 'fly',
                 artist: 'ludovico einaudi',
                 genre: 'other',
-                rating: 4
+                rating: '4'
             },
         ]
     })
 
     const addSong = newSong => setSongs({allSongs: [...songs.allSongs].concat(newSong)})
 
+    const sortSongs = (fieldName, reverse) => {
+        let sortedSongs = songs.allSongs.sort((item1, item2) => {
+            if (item1[fieldName].toLowerCase()>item2[fieldName].toLowerCase()){
+                return 1
+            }
+            if (item1.song<item2.song){
+                return -1
+            }
+            return 0
+        })
+        reverse && sortedSongs.reverse()
+        setSongs({allSongs: sortedSongs}) 
+    }
+
+    const deleteSong = (e) => {
+        const id = parseInt(e.target.parentNode.id)
+        const filteredSongs = songs.allSongs.filter((item, index) => index !== id)
+        setSongs({allSongs: filteredSongs})
+    }
+
     return (
-        <div>
+        <main>
             <NewSong addSong={addSong}/>
-            <List {...songs}/>
-        </div>
+            <ListHead sortSongs={sortSongs}/>              
+            <List {...songs} deleteSong={deleteSong}/>
+
+        </main>
     )
 }
 
