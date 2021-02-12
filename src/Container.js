@@ -11,8 +11,8 @@ const Container = () => {
     return (
         <main>
                 <NewSong />
-                <ListHead />
                 <FilterSong />
+                <ListHead />
                 <List {...songs}/>
             </main>
         )

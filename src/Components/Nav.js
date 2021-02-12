@@ -7,14 +7,8 @@ const Nav = () => {
         <header>
             <h1>Playlist</h1>
             <nav>
-                <ul>
-                    <Link to='/'>
-                        <li>Home</li>
-                    </Link>
-                    <Link to='/About'>
-                        <li>About</li>
-                    </Link>
-                </ul>
+                <Link to='/'>Home</Link>
+                <Link to='/About'>About</Link>
             </nav>
         </header>
     )

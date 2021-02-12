@@ -11,7 +11,7 @@ const ListItem = (props) => {
             <span>{props.artist}</span>
             <span>{props.genre}</span>
             <span>{props.rating}</span>
-            <button onClick={()=>dispatch(deleteSong(props.id))}>Delete</button>
+            <button className='delete pointer' onClick={()=>dispatch(deleteSong(props.id))}></button>
         </li>
     )
 }

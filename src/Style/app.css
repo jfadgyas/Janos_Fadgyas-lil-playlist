@@ -1,0 +1,158 @@
+/*
+#1D04BF
+#0D05F2
+#07038C
+#858BF2
+#F2D64B
+
+a-z up f15d
+a-z down f881
+1-9 up f162
+1-9 down f886
+
+arrow f0de - f0dd
+f35b - f358
+f35b - f358
+*/
+
+
+
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.css");
+
+body{
+    background-color: #04062c;
+    color: #858BF2;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #04062c;
+    text-align: center;
+}
+
+a{
+    color: white;
+    padding: 1em;
+}
+
+form{
+    margin-top: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+input, select{    
+    padding: 0.2em;
+    border: 1px solid #858BF2;
+    border-radius: 0.3em;
+    background-color: #1D04BF;
+    color: #858BF2;
+}
+
+input[type=text]{
+    width: 25%;
+}
+
+input:focus{
+    outline: none;
+    background-color: #07038C;
+    color: #F2D64B;
+}
+
+label{
+    padding: 0.2em;
+}
+
+select{
+    appearance: none;
+    padding-right: 1.5em;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(242, 214, 75)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 100%;
+}
+
+section{
+    text-align: center;
+}
+
+.list-head{
+    padding: 0.4em;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.list-head__wrapper{
+    display: flex;
+    justify-content: left;
+}
+
+button{
+    background: none;
+    border: none;
+}
+
+.add{
+    padding: 0.4em;
+    background-color: #07038C;
+    color: #F2D64B;
+    border: 1px solid #858BF2;
+    border-radius: 0.3em;
+}
+
+.sort, .delete{
+    width: 30px;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    color: #F2D64B;
+}
+
+.sort--az:before{
+    content: '\f15d';  
+}
+
+.sort--za:after{
+    content: '\f881';  
+}
+
+.sort--19:before{
+    content: '\f162';  
+}
+
+.sort--91:after{
+    content: '\f886';  
+}
+
+.delete:after{
+    content: '\f2ed';
+    color: #FF5240;
+  }
+
+.pointer{
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 1em;
+}
+
+li{
+    margin-bottom: 2px;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #1D04BF;
+}
+
+li:nth-child(2n){
+    background-color: #0D05F2;
+}

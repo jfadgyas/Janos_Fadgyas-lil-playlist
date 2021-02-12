@@ -6,17 +6,26 @@ const ListHead = () => {
     const dispatch = useDispatch()
 
     return (
-        <header>
-            <button onClick={()=>dispatch(sortSongs('song', false))}>song up</button>
-            <p>Song</p>
-            <button onClick={()=>dispatch(sortSongs('song', true))}>song down</button>
-            <button onClick={()=>dispatch(sortSongs('artist', false))}>artist up</button>
-            <p>Artist</p>
-            <button onClick={()=>dispatch(sortSongs('artist', true))}>artist down</button>
+        <header className='list-head'>
+            <div className='list-head__wrapper'>
+                <button className='sort sort--az pointer' onClick={()=>dispatch(sortSongs('song', false))}></button>
+                <p>Song</p>
+                <button className='sort sort--za pointer' onClick={()=>dispatch(sortSongs('song', true))}></button>
+
+            </div>
+            <div  className='list-head__wrapper'>
+                <button className='sort sort--az pointer' onClick={()=>dispatch(sortSongs('artist', false))}></button>
+                <p>Artist</p>
+                <button className='sort sort--za pointer' onClick={()=>dispatch(sortSongs('artist', true))}></button>
+
+            </div>
             <p>Genre</p>
-            <button onClick={()=>dispatch(sortSongs('rating', false))}>rating up</button>
-            <p>Rating</p>
-            <button onClick={()=>dispatch(sortSongs('rating', true))}>rating down</button>           
+            <div  className='list-head__wrapper'>
+                <button className='sort sort--19 pointer' onClick={()=>dispatch(sortSongs('rating', false))}></button>
+                <p>Rating</p>
+                <button className='sort sort--91 pointer' onClick={()=>dispatch(sortSongs('rating', true))}></button>           
+
+            </div>
         </header>  
     )
 }
