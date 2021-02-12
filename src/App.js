@@ -1,13 +1,19 @@
 import React from 'react';
 import Container from './Container'
+import Nav from './Components/Nav'
+import About from './Components/About'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () => {
-    //header
-    //add bar
-    //list
-    //footer
+    
     return (
-        <Container />
+        <Router>
+            <Nav />
+            <Switch>
+                <Route path='/' exact component={Container}/>
+                <Route path='/about' component={About}/>
+            </Switch>
+        </Router>
     )
 }
 
