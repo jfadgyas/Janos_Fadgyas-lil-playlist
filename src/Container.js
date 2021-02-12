@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import List from './Components/List'
 import ListHead from './Components/ListHead'
 import NewSong from './Components/NewSong'
+import FilterSong from './Components/FilterSong'
 
 const Container = () => {
     const [songs, setSongs] = useState({
@@ -26,6 +27,9 @@ const Container = () => {
             },
         ]
     })
+    const [genres, setGenres] = useState()
+    const newGenreList = useRef(true)
+    const prevSongs = useRef(songs.allSongs)
 
     const addSong = newSong => setSongs({allSongs: [...songs.allSongs].concat(newSong)})
 
@@ -49,12 +53,40 @@ const Container = () => {
         setSongs({allSongs: filteredSongs})
     }
 
+    useEffect(() => {
+        if (newGenreList.current){
+            const genreItems = Array.from(new Set(songs.allSongs.map(item => item.genre)))
+            const genres = genreItems.map((item,index) => <option key={index} value={item}>{item}</option>)
+            setGenres(genres)
+            prevSongs.current = songs.allSongs
+        }
+        newGenreList.current = true
+    }, [songs])
+
+    const filterSong = (filters) => {
+        newGenreList.current = false
+        let filterTempSongs = [...prevSongs.current]
+        const filteredSongs = filterTempSongs.filter(item => {
+            if (filters.genre && filters.rating){
+                return item.genre === filters.genre && item.rating === filters.rating
+            }
+            if (filters.genre && !filters.rating){
+                return item.genre === filters.genre
+            }
+            if (!filters.genre && filters.rating){
+                return item.rating === filters.rating
+            }
+            return item
+        })
+        setSongs({allSongs: filteredSongs})
+    }
+
     return (
         <main>
             <NewSong addSong={addSong}/>
-            <ListHead sortSongs={sortSongs}/>              
+            <FilterSong genres={genres} filterSong={filterSong} />            
+            <ListHead sortSongs={sortSongs}/>
             <List {...songs} deleteSong={deleteSong}/>
-
         </main>
     )
 }
